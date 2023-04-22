@@ -19,6 +19,13 @@
 /obj/item/organ/genital/testicles/generate_fluid()
 	if(!linked_organ && !update_link())
 		return FALSE
+	if(is_type_in_list(/datum/quirk/cum_plus, owner.roundstart_quirks))
+		var/obj/item/organ/genital/penis/P = linked_organ
+		P.modify_size(P.length * 0.001)
+		fluid_mult = fluid_mult * 1.001
+		fluid_max_volume = fluid_max_volume * 1.001
+		
+		
 	return ..()
 	// in memoriam "Your balls finally feel full, again." ??-2020
 

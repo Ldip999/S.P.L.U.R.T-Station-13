@@ -18,6 +18,8 @@
 		#include "map_files\SyndicateStation\SyndicateBoxStation.dmm"
 		#include "splurt_maps\map_files\Smexistation\Snaxi_Splurt.dmm"
 		#include "map_files\BoxedInStation\BoxedInStation.dmm"
+		#include "fdmaps\asteroidstation.dmm"
+
 
 		#ifdef CIBUILDING
 			#include "templates.dm"

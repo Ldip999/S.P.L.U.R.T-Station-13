@@ -1208,6 +1208,7 @@
 /proc/build_genital_fluids_list()
 	// Define disallowed reagents
 	var/list/blacklisted = list(
+	/*
 		// Base ethanol
 		/datum/reagent/consumable/ethanol,
 
@@ -1652,14 +1653,15 @@
 		// Increases temperature
 		/datum/reagent/consumable/hot_coco,
 		*/
+		*/
 	)
 
 	// Define base list
-	var/list/consumable_list = subtypesof(/datum/reagent/consumable)
+	var/list/consumable_list = subtypesof(/datum/reagent/)
 
 	// Define additional allowed reagents
 	var/list/whitelist_list = list(
-		// Just water
+		/*// Just water
 		/datum/reagent/water,
 
 		// Causes arousal
@@ -1672,6 +1674,7 @@
 
 		// Restores blood volume
 		/datum/reagent/blood,
+		*/
 	)
 
 	// Add whitelisted entries to main list

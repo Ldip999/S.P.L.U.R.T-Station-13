@@ -74,6 +74,11 @@
 	if(istype(G, /obj/item/organ/genital/penis))
 		var/obj/item/organ/genital/penis/P = G
 		condomning = locate(/obj/item/genital_equipment/condom) in P.contents
+		P.modify_size(1)
+		P.modify_size(P.length * 0.1)
+		var/obj/item/organ/genital/testicles/T = P.linked_organ
+		T.fluid_mult *= 1.2
+		T.fluid_max_volume *= 1.2
 	G.generate_fluid(R)
 	log_message("Climaxed using [G] with [target]", LOG_EMOTE)
 	if(condomning)

@@ -1,0 +1,11 @@
+{
+    "map_name": "Asteroid station",
+    "map_path": "fdmaps",
+    "map_file": "asteroidstation.dmm",
+    "shuttles": {
+	    "cargo": "cargo_box",
+	    "ferry": "ferry_fancy",
+	    "whiteship": "whiteship_box",
+	    "emergency": "emergency_box"
+    }
+}
