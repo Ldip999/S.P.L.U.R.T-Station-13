@@ -350,12 +350,7 @@ SUBSYSTEM_DEF(vote)
 				log_admin("The map has been voted for and will change to: [VM.map_name]")
 				if(SSmapping.changemap(config.maplist[.]))
 					to_chat(world, "<span class='boldannounce'>The map vote has chosen [VM.map_name] for next round!</span>")
-			if("transfer") // austation begin -- Crew autotransfer vote
-				if(. == VOTE_TRANSFER)
-					SSshuttle.autoEnd()
-					var/obj/machinery/computer/communications/C = locate() in GLOB.machines
-					if(C)
-						C.post_status("shuttle") // austation end
+
 	if(restart)
 		var/active_admins = 0
 		for(var/client/C in GLOB.admins)

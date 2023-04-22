@@ -295,10 +295,6 @@ Works together with spawning an observer, noted above.
 			penalty += roundstart_quit_limit - world.time
 		if(penalty)
 			penalty += world.realtime
-			if(SSautotransfer.can_fire && SSautotransfer.maxvotes)
-				var/maximumRoundEnd = SSautotransfer.starttime + SSautotransfer.voteinterval * SSautotransfer.maxvotes
-				if(penalty - SSshuttle.realtimeofstart > maximumRoundEnd + SSshuttle.emergencyCallTime + SSshuttle.emergencyDockTime + SSshuttle.emergencyEscapeTime)
-					penalty = CANT_REENTER_ROUND
 			if(!(ghost.ckey in GLOB.client_ghost_timeouts))
 				GLOB.client_ghost_timeouts += ghost.ckey
 				GLOB.client_ghost_timeouts[ghost.ckey] = 0
@@ -321,10 +317,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	var/roundstart_quit_limit = CONFIG_GET(number/roundstart_suicide_time_limit) MINUTES
 	if(world.time < roundstart_quit_limit)
 		penalty += roundstart_quit_limit - world.time
-	if(SSautotransfer.can_fire && SSautotransfer.maxvotes)
-		var/maximumRoundEnd = SSautotransfer.starttime + SSautotransfer.voteinterval * SSautotransfer.maxvotes
-		if(penalty - SSshuttle.realtimeofstart > maximumRoundEnd + SSshuttle.emergencyCallTime + SSshuttle.emergencyDockTime + SSshuttle.emergencyEscapeTime)
-			penalty = CANT_REENTER_ROUND
 
 	var/sig_flags = SEND_SIGNAL(src, COMSIG_MOB_GHOSTIZE, (stat == DEAD) ? TRUE : FALSE, FALSE, (stat == DEAD)? penalty : 0, (stat == DEAD)? TRUE : FALSE)
 
@@ -364,10 +356,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	var/roundstart_quit_limit = CONFIG_GET(number/roundstart_suicide_time_limit) MINUTES
 	if(world.time < roundstart_quit_limit)
 		penalty += roundstart_quit_limit - world.time
-	if(SSautotransfer.can_fire && SSautotransfer.maxvotes)
-		var/maximumRoundEnd = SSautotransfer.starttime + SSautotransfer.voteinterval * SSautotransfer.maxvotes
-		if(penalty - SSshuttle.realtimeofstart > maximumRoundEnd + SSshuttle.emergencyCallTime + SSshuttle.emergencyDockTime + SSshuttle.emergencyEscapeTime)
-			penalty = CANT_REENTER_ROUND
 
 	if(sig_flags & COMPONENT_DO_NOT_PENALIZE_GHOSTING)
 		penalty = 0
