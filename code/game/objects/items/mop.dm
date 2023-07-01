@@ -34,7 +34,20 @@
 				cleaned_something = TRUE
 				qdel(O)
 		if(cleaned_something && user && user.client)
+			var /mob/living/carbon/human/person = user
+			var wearidinstance = person.wear_id
+			var /obj/item/card/id/idcard = null
+			if(istype(wearidinstance, /obj/item/pda))
+				var/obj/item/pda/pdainstace = wearidinstance
+				idcard = pdainstace.id
+			else if(istype(wearidinstance,/obj/item/card/id))
+				idcard = wearidinstance
+			if(idcard != null && idcard.registered_account != null)
+				idcard.registered_account.adjust_money(1)
+				to_chat(user, "<span>That dirt never stood a chance! +1 credit</span>")
+
 			user.client.increment_progress("janitor", 1)
+
 	reagents.reaction(A, TOUCH, 10)	//Needed for proper floor wetting.
 	reagents.remove_any(1)			//reaction() doesn't use up the reagents
 
